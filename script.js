@@ -60,19 +60,7 @@ if (player2 == player1){
     player2 += "-2";
 };
 
-// var player1 = prompt("player-1 name");
-// while ((player1 == "") || (player1 == "null") || (player1 == undefined)) {
-//     var player1 = prompt("insert currect name for player-1");
-// };
 
-// var player2 = prompt("player-2 name");
-// while ((player2 == "") || (player2 == "null") || (player2 == undefined)) {
-//     var player2 = prompt("insert currect name for player-2");
-// };
-
-// if (player2 == player1) {
-//     player2 += "-2";
-// };
 
 
 var td = "";
@@ -130,7 +118,7 @@ function check() {
         var accept = 0;
         var yItems = document.getElementsByClassName(event.target.className); //select items in same column
 
-        var start = (parseInt(event.target.parentNode.className.substring(4))) - 5; //try to check items onli -5 and + 5
+        var start = (parseInt(event.target.parentNode.className.substring(4))) - 5; //try to check items only from -5 to +5  from last added
         if (start < 0) {
             var start = 0;
         };
@@ -138,7 +126,7 @@ function check() {
         if (end > yItems.length) {
             var end = yItems.length - 1;
         };
-        //console.log(start,end);    
+        
         for (let k = start; k < end; k++) { //checking column 
             if (yItems[k].innerHTML == event.target.innerHTML) {
                 accept++;
@@ -203,7 +191,7 @@ function check() {
             if (x > row - 1 || y > col - 1) {
                 break;
             };
-            //console.log(matrix[x][y]);	    	
+            
             if (matrix[y][x].innerHTML == event.target.innerHTML) {
                 accept++;
                 if (accept == 5) {
@@ -227,22 +215,21 @@ function check() {
         var x = x2;
         var y = y2;
 
-        //console.log("x = " + x, "y = " + y);
+        
         for (let k = 0; k < 5; k++) { // ,,go to,, start item    					
             if (x != row - 1 && y != 0) {
                 x++;
                 y--;
             };
         };
-        //console.log(matrix[y][x]);
+        
 
 
         for (let k = 0; k < 11; k++) {
-            if (x < 0 || y > col - 1) {
-                //console.log("x = " + x, "y = " + y);
+            if (x < 0 || y > col - 1) {                
                 break;
             };
-            //console.log(matrix[x][y]);     	  	
+            
             if (matrix[y][x].innerHTML == event.target.innerHTML) {
                 accept++;
                 if (accept == 5) {
