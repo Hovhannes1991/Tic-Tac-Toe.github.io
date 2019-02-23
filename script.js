@@ -2,6 +2,27 @@
 var ok_btn = document.getElementById("ok");
 ok_btn.addEventListener("click",chekConfig);
 
+document.getElementsByClassName("contineu")[0].addEventListener("click", contineu);
+document.getElementsByClassName("restart")[0].addEventListener("click", restart);
+
+function contineu(){
+	document.getElementsByClassName("gameOver")[0].style.display = 'none';
+	start();
+};
+
+function restart(){
+	document.getElementsByClassName("gameOver")[0].style.display = 'none';
+	score_1 = 0;
+	score_2 = 0;
+	document.getElementById("player1").value = "";
+	document.getElementById("player2").value = "";
+	document.getElementsByTagName("table")[0].innerHTML = "";
+	document.getElementsByClassName("config")[0].style.display = 'flex';
+};
+
+
+var score_1 = 0;
+var score_2 = 0;
 
 function chekConfig(){
     var pl1 = document.getElementById("player1");
@@ -9,7 +30,7 @@ function chekConfig(){
     var r = document.getElementById("row");
     var c = document.getElementById("col");
 
-    var status = true;
+    var status = true;    
 
     if (pl1.value == "" || pl1.value == "null" || pl1.value == "undefined"){
         pl1.style.border = "2px solid red";
@@ -57,7 +78,7 @@ var player1 = document.getElementById("player1").value;
 var player2 = document.getElementById("player2").value;
 
 if (player2 == player1){
-    player2 += "-2";
+    player2 += "(2)";
 };
 
 
@@ -250,13 +271,24 @@ function gameOver() {
         tdArray[k].removeEventListener("click", addSimbhol);
         tdArray[k].removeEventListener("click", check);
     };
+
     if (event.target.innerHTML == "X") {
         winner = player1;
+        score_1++;
     } else {
         winner = player2;
+        score_2++;
     };
+
     setTimeout(function() {
-        alert("winner is " + winner);
+    	document.getElementsByClassName("lastWinner")[0].innerHTML = `winner is ${winner}`;    	
+    	document.getElementsByClassName("text1")[0].innerHTML = player1 + " - " + score_1;
+    	document.getElementsByClassName("text2")[0].innerHTML = player2 + " - " + score_2;
+    	document.getElementsByClassName("gameOver")[0].style.display = "flex";
+    	document.getElementsByClassName('gameOver')[0].classList.add("fade");        
     }, 500);
 };
+
+
+
 };
