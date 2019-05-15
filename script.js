@@ -119,6 +119,10 @@ for (let y = 0; y < col; y++) {
 
 
 function addSimbhol() {
+    if (event.target.innerHTML != ""){
+      return false;
+    }
+  
     if (simbhol == "X") {
         event.target.innerHTML = "X";
         event.target.style.backgroundColor = 'green';
@@ -133,6 +137,10 @@ function addSimbhol() {
 var winner = false;
 
 function check() {
+    // if (event.target.innerHTML != ""){
+    //   return false;
+    // }
+  
     //vertical
     if (!winner) {
 
